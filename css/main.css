@@ -1,0 +1,83 @@
+.pulse-cirlce {
+ 
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border: none;
+  box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+  border-radius: 50%;
+  background-color: #e84c3d;
+ 
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+ 
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+
+#droparea {
+  background-color: #ebf5fb;
+  margin: 10px auto;
+  width: 80%;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid #c8cfe8;
+  color: black;
+  border-radius: 5px;
+  border-style: dashed;
+  position: relative;
+ top:60px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  transition: background 0.2s ease;
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+
+}
+#droparea:hover {
+  background-color: #deebfa;
+  transition: background 0.2s ease;
+          
+}
+
+.custom-file-control:lang(en)::after {
+  content: "Choose file...";
+}
+
+.custom-file-control:lang(en)::before {
+  content: "Browse";
+}
+   .upload{
+       padding: 8px 10px;
+       position: relative;        
+       border-radius: 5px;
+       width:150px;
+    }
+    .upload input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    }
+.opacity{
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+     -moz-opacity: 0;
+     -khtml-opacity: 0;
+     opacity: 0;
+    }

@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta charset="utf-8">
+        <meta name="Author" content="Rupesh Sreeraman" />
+        <meta name="Keywords" content="file,transfer,senfile,peertopeer,livetransfer" />
+        <meta name="Description" content="Peer to peer secure file transfer" />
+
+        <title>FileSendo | Live file transfer app</title>
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+         <link rel="stylesheet" href="css/infinite.css">
+         <link rel=stylesheet href=css/fa.min.css> <link>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+    </head>
+    <body>
+        
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="index.html">FileSendo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+          
+            
+             
+            
+          </ul>
+          
+        </div>
+      </nav>
+    </header>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+  <main role="main" class="container">
+
+       <div class="container" style="margin-top:80px;"> 
+     
+           
+<div class="well">
+
+<div id="title" ><H3 style="display:inline;">Live file transfer</H3><small><i class="fa fa-circle" id="srvstatus" aria-hidden="true"style="margin:5px;color:rgb(0, 171, 35);display:none;"></i></small></div>
+   <div style="margin-top:30px;margin-bottom:30px;">
+        <div id="cnnt"class="pulse-cirlce"><span style="margin-left:35px;"><b>Connecting...</b></span></div>  
+     
+   </div>
+<div class="card" >
+  
+  <div class="card-body text-primary">
+    
+    <p class="card-text">Share this URL to start transfer </p>
+    <div class="input-group" >
+      <input id="shareurl" type="text" class="form-control" text="" aria-label="Share URL">
+      <span class="input-group-btn">
+      <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   <i class="fa fa-share-alt" aria-hidden="true"></i>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#" id="sharecopy"><i class="fa fa-clipboard" aria-hidden="true"></i> Copy</a>
+    <a class="dropdown-item" href="#" id="sharemail"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+    <a class="dropdown-item" href="#" id="sharewhatsapp"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+
+  </div>
+  </div>
+</div>
+
+      </span>
+    </div>
+    
+        
+        </div>
+    <div class="well">
+    <a href="#" class="upload btn btn-outline-primary">
+
+        <i class="fa fa-file" aria-hidden="true" style="padding-right: 5px"></i>
+        Browse File
+        <input id="mfile" type="file" class="opacity" /></a>
+</div>
+       <p id="receiver"></p>
+         </main>
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+           <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="js/main.js"></script>
+      
+     
+    </body>
+</html>
