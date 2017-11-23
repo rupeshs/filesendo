@@ -11,12 +11,16 @@ var mconn;
 
 var connectedPeers = {}; 
 var peer = new Peer({host: 'filesendo.herokuapp.com',port:"",path:"/",secure:true},);
-
+var reciveid=window.location.hash.substring(1);
 
 peer.on('open', function(id) {
   console.log('uID: ' + id);
   $("#cnnt").fadeOut();
-  $("#srvstatus").fadeIn();
+	$("#srvstatus").fadeIn();
+	if  (!reciveid)
+	  {
+			$("#senderid").fadeIn();
+		}
     $("#shareurl").val("https://rupeshs.github.io/filesendo/index.html#"+id);
     shareurl="https://rupeshs.github.io/filesendo/index.html#"+id;
 
@@ -29,7 +33,8 @@ peer.on('error', function(err) {
 
 //listen for the connection event
 peer.on('connection', function(conn) { 
-   $('#receiver').html("Receiver connected ("+conn.peer+")");
+	 $('#receiver').html("Receiver connected ("+conn.peer+")");
+	 $("#senderc").fadeIn();
   mconn=conn;
   console.log(conn);
  conn.on('data', function(data) {
@@ -48,7 +53,7 @@ peer.on('connection', function(conn) {
 
 });
 
-var reciveid=window.location.hash.substring(1);
+
 
 
 if (reciveid)
