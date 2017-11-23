@@ -10,7 +10,7 @@ var mconn;
  $(document).ready(function() {
 
 var connectedPeers = {}; 
-var peer = new Peer({host: 'filesendo.herokuapp.com',port:80,path:"/",secure:true},);
+var peer = new Peer({host: 'filesendo.herokuapp.com',port:"",path:"/",secure:true},);
 
 
 peer.on('open', function(id) {
