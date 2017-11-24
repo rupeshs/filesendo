@@ -8,15 +8,19 @@ var mconn;
   var downloadInProgress = false;
   var shareurl;
  $(document).ready(function() {
-
+	  $("div#divLoading").addClass('show');
+$("#srvstatus").css("color", "red");
 var connectedPeers = {}; 
 var peer = new Peer({host: 'filesendo.herokuapp.com',port:"",path:"/",secure:true},);
+pingPeerServer();
 var reciveid=window.location.hash.substring(1);
 
 peer.on('open', function(id) {
+	
   console.log('uID: ' + id);
   $("#cnnt").fadeOut();
-	$("#srvstatus").fadeIn();
+	
+	$("#srvstatus").css("color", "#00ab23");
 	if  (!reciveid)
 	  {
 			$("#senderid").fadeIn();
@@ -29,11 +33,24 @@ peer.on('open', function(id) {
 
 peer.on('error', function(err) {
   console.log(err);
-})
+});
 
+
+peer.on('disconnected', function(close) {
+	 $("#srvstatus").css("color", "red");
+	 console.log("Grr...lost connection");
+	
+});
+function pingPeerServer() {
+	 console.log("PING");
+    peer.socket.send({type: 'ping'});
+    var timeoutID = setTimeout(pingPeerServer,30000);
+}
+ 
 //listen for the connection event
 peer.on('connection', function(conn) { 
-	 $('#receiver').html("Receiver connected ("+conn.peer+")");
+	 $('#receiver').fadeIn();
+	 $('#receiver').html("<p>Receiver connected <span class=\"badge badge-success\">"+conn.peer+"</span</p>");
 	 $("#senderc").fadeIn();
   mconn=conn;
   console.log(conn);
