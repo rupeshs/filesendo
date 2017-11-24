@@ -6,8 +6,12 @@ var mconn;
 	var incomingFileData;
 	var bytesReceived;
   var downloadInProgress = false;
-  var shareurl;
+	var shareurl;
+	var chunkSize;
+	var totalByteSend;
  $(document).ready(function() {
+	 totalByteSend=0;
+		chunkSize=0;
 	  $("div#divLoading").addClass('show');
 $("#srvstatus").css("color", "red");
 var connectedPeers = {}; 
@@ -119,11 +123,12 @@ $("#sharemail").click(function() {
 
 	var fileInput = $( 'input[type=file]' );
 	var fileReader = new FileReader();
-
+ 
 	fileReader.onload = sendNextChunk;
 	fileInput.on( 'change', startTransfer );
 
 	function startTransfer() {
+		  totalByteSend=0;
 		file = fileInput[ 0 ].files[ 0 ];
 		console.log( 'sending ' + file.name + ' of ' + file.size + ' bytes' );
 		currentChunk = 0;
@@ -137,11 +142,14 @@ $("#sharemail").click(function() {
   function readNextChunk() {
 		var start = BYTES_PER_CHUNK * currentChunk;
 		var end = Math.min( file.size, start + BYTES_PER_CHUNK );
+		 chunkSize=end-start;
 		fileReader.readAsArrayBuffer( file.slice( start, end ) );
 	}
 
 	function sendNextChunk() {
-    console.log("send");
+		console.log("send");
+		 totalByteSend=totalByteSend+chunkSize;
+		$('#sendStatus').html( "Bytes sent "+totalByteSend	+" / "+file.size);
 	  mconn.send( fileReader.result );
 		currentChunk++;
 
