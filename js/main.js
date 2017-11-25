@@ -28,9 +28,11 @@ peer.on('open', function(id) {
 	if  (!reciveid)
 	  {
 			$("#senderid").fadeIn();
+		  $("#shareurl").val("https://rupeshs.github.io/filesendo/index.html#"+id);
+		 shareurl="https://rupeshs.github.io/filesendo/index.html#"+id;
+		 console.log( shareurl);
 		}
-    $("#shareurl").val("https://rupeshs.github.io/filesendo/index.html#"+id);
-    shareurl="https://rupeshs.github.io/filesendo/index.html#"+id;
+
 
 });
 
@@ -54,7 +56,8 @@ function pingPeerServer() {
 //listen for the connection event
 peer.on('connection', function(conn) { 
 	 $('#receiver').fadeIn();
-	 $('#receiver').html("<p>Receiver connected <span class=\"badge badge-success\">"+conn.peer+"</span</p>");
+	  $('#client').fadeIn();
+	 $('#receiver').html("<p>Receiver connected <span class=\"badge badge-primary\">"+conn.peer+"</span</p>");
 	 $("#senderc").fadeIn();
   mconn=conn;
   console.log(conn);
@@ -128,9 +131,13 @@ $("#sharemail").click(function() {
 	fileInput.on( 'change', startTransfer );
 
 	function startTransfer() {
-		  totalByteSend=0;
+		totalByteSend=0;
+
+		
+		 $('#sendpg').fadeIn();
 		file = fileInput[ 0 ].files[ 0 ];
-		console.log( 'sending ' + file.name + ' of ' + file.size + ' bytes' );
+	
+		$('#sendInfo').html(file.name+"("+formatBytes(file.size)+")");
 		currentChunk = 0;
 	   mconn.send(JSON.stringify({
 			fileName: file.name,
@@ -147,8 +154,9 @@ $("#sharemail").click(function() {
 	}
 
 	function sendNextChunk() {
-		console.log("send");
+	
 		 totalByteSend=totalByteSend+chunkSize;
+			$(".progress-bar ").css("width",  ((totalByteSend / file.size ) * 100).toFixed( 2 ) + '%' );
 		$('#sendStatus').html( "Bytes sent "+totalByteSend	+" / "+file.size);
 	  mconn.send( fileReader.result );
 		currentChunk++;
@@ -169,14 +177,21 @@ $("#sharemail").click(function() {
 		incomingFileData = [];
 		bytesReceived = 0;
 		downloadInProgress = true;
-		console.log( 'incoming file <b>' + incomingFileInfo.fileName + '</b> of ' + incomingFileInfo.fileSize + ' bytes' );
+
+		$('#receiveInfo').html("Receiving "+incomingFileInfo.fileName+"("+formatBytes(incomingFileInfo.fileSize)+")");
+		$('#receinfo').fadeIn();
+		$('#recepg').fadeIn();
+	
+	//	console.log( 'incoming file <b>' + incomingFileInfo.fileName + '</b> of ' + incomingFileInfo.fileSize + ' bytes' );
 	}
 
 	function progressDownload( data ) {
 		bytesReceived += data.byteLength;
 		incomingFileData.push( data );
 		console.log( 'progress: ' +  ((bytesReceived / incomingFileInfo.fileSize ) * 100).toFixed( 2 ) + '%' );
-		if( bytesReceived === incomingFileInfo.fileSize ) {
+			$("#recepb").css("width",((bytesReceived / incomingFileInfo.fileSize ) * 100).toFixed( 2 ) + '%');
+		  $('#receStatus').html( "Bytes received "+bytesReceived	+" / "+incomingFileInfo.fileSize);
+			if( bytesReceived === incomingFileInfo.fileSize ) {
 			endDownload();
 		}
 	}
@@ -201,3 +216,5 @@ $("#sharemail").click(function() {
   $("#copybtn").click(function(){
    
 });
+
+function formatBytes(a,b){if(0==a)return"0 Bytes";var c=1024,d=b||2,e=["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f]}

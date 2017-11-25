@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
          <link rel="stylesheet" href="css/infinite.css">
-         <link rel=stylesheet href=css/fa.min.css> <link>
+         <link rel=stylesheet href=css/fa.min.css>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -51,13 +51,13 @@
 
  <div id="title" ><H3 style="display:inline;">Live file transfer</H3><small><i class="fa fa-circle" id="srvstatus" aria-hidden="true" style="margin:5px;color:rgb(0, 171, 35);"></i></small>  </div>
    
-<div class="card" id="senderid" style="display:none;">
+<div class="card" id="senderid" style="display:none">
   
   <div class="card-body text-primary">
     
     <p class="card-text">Share this URL to start transfer </p>
     <div class="input-group" >
-      <input id="shareurl" type="text" class="form-control" text="" aria-label="Share URL">
+      <input id="shareurl" type="text" class="form-control"  aria-label="Share URL">
       <span class="input-group-btn">
       <div class="btn-group">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,19 +75,46 @@
       </span>
     </div>
      
-        
-        </div>
+   </div>     
+     
   <div id="cnnt" class="spinner"></div>
- <div id="receiver" class="alert  alert-info" role="alert" style="display:none;margin-top:10px;"></div>
-   
-   <div class="well" id="senderc" style="display:none;">
+
+<div id="client" class="card border-primary"  style="display:none;;margin-top:10px;">
+  
+  <div class="card-body text-primary">
+    <div id="receiver"  style="display:none;margin-top:10px;"></div>
+    <h5 class="card-title" id="sendInfo"></h5>
+<div class="well" id="senderc" style="display:none;">
     <a href="#" class="upload btn btn-outline-primary">
 
         <i class="fa fa-file" aria-hidden="true" style="padding-right: 5px"></i>
         Browse File
-        <input id="mfile" type="file" class="opacity" /></a>
+        <input id="mfile" type="file" class="opacity" /></a><p id="sendInfo"></p>
 </div>
-      <p id="sendStatus"></p>
+     
+      <div class="progress" id="sendpg" style="display:none;">
+  <div class="progress-bar progress-bar-striped " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+</div>
+      <p id="sendStatus"></p>  
+  </div>
+</div>
+<div id="receinfo" class="card border-primary"  style="display:none;;margin-top:10px;">
+  
+  <div class="card-body text-primary">
+    <h5 class="card-title" id="receiveInfo"></h5>
+
+     
+      <div class="progress" id="recepg" style="display:none;">
+  <div id="recepb" class="progress-bar progress-bar-striped " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+</div>
+      <p id="receStatus"></p>  
+  </div>
+</div>
+
+ 
+   
+   
+     
             </main>
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/vendor/peer.min.js"></script>
